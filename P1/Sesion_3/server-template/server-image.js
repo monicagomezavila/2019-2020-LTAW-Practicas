@@ -19,7 +19,7 @@ http.createServer((req, res) => {
     filename += "index.html"
     mime = "text/html"
   }else if (q.pathname == "/css/micss.css") {
-    filename += "micss.css"
+    filename += "./css/micss.css"
     mime += "text/css"
   }else if (q.pathname == "/logo_node.png") {
     filename += "logo_node.png"
