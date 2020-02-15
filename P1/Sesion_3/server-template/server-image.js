@@ -7,32 +7,36 @@ const PUERTO = 8080
 //-- se imprime un mensaje en la consola
 http.createServer((req, res) => {
   console.log("----------> Peticion recibida")
-  let q = url.parse(req.url, true); //para ver el re
+  let q = url.parse(req.url, true);
   console.log("Recurso:" + q.pathname)
 
+  //variables: filename = recurso que se pide; mime = tipo de recurso
+  let filename = "";
+  let mime = "";
 
-  let filename = ""
-  let mime = ""
 
-  //-- Obtener fichero a devolver
   if (q.pathname == "/"){
     filename += "index.html"
-    mime = "text/html"
-  }else if (q.pathname == "/css/micss.css") {
-    filename += "./css/micss.css"
-    mime += "text/css"
-  }else if (q.pathname == "/logo_node.png") {
-    filename += "logo_node.png"
-    mime += "text/png"
-  }else if (q.pathname == "/test1.html"){
-    filename += "test1.html"
-    mime += "text/html"
-  }else if(q.pathname == "/logo-urjc.png"){
-    filename += "logo-urjc.png"
-    mime += "text/png"
-  }else if (q.pathname == "/index.html"){
-    filename += "index.html"
-    mime = "text/html"
+    mimee = "text/html"
+  }else{
+    //HAY MAS DE UNA / SIGNIFICA QUE ESTA EN OTRA CARPETA
+    let cant = 0;
+    //si hay mas de una /, significa que esta dentro de una carpeta
+    for(var i = 0; i < q.pathname.length; i++) {
+  	   if (q.pathname[i] == "/")
+          cant = cant+1;
+     }
+
+     if (cant>1){
+        filename = "." + q.pathname
+    }else{
+        filename = q.pathname.slice(1)
+    }
+
+    //PARA ENCONTRAR EL TIPO, MIME
+    num = q.pathname.lastIndexOf(".");
+    mime = q.pathname.slice(num+1)
+    mime = "text/" + mime
   }
 
 
