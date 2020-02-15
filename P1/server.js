@@ -1,35 +1,62 @@
-// SERVIDOR WEB TIENDA
-
-//-- Acceso al módulo fs, para lectura de ficheros
-const fs = require('fs');
-
-//-- http server
 const http = require('http');
+const url = require('url'); //para parsear
+const fs = require('fs');
 const PUERTO = 8080
 
-console.log("Arrancando servidor...")
+//-- Configurar y lanzar el servidor. Por cada peticion recibida
+//-- se imprime un mensaje en la consola
+http.createServer((req, res) => {
+  console.log("----------> Peticion recibida")
+  let q = url.parse(req.url, true);
+  console.log("Recurso:" + q.pathname)
 
-server = http.createServer((req, res) => {
-  console.log("---> Peticion recibida")
-  console.log(req.headers.host)
-  //console.log("Recurso solicitado (URL): " + req.url)
+  //variables: filename = recurso que se pide; mime = tipo de recurso
+  let filename = "";
+  let mime = "";
 
-  pet1 = req.url
-  pet1 = pet1.slice(1)
 
-  fs.readFile(pet1, 'utf8', (err, data) => {
-      if (err) {
-        console.log()
-        console.log("-------> ERROR!!")
-        console.log(err.message)
-        console.log()
-      }
-      else { //-- Lectura normal, cuando no hay errores
-        console.log("---> Comienzo del fichero leido")
-        console.log(data)
-        console.log("---> Final del fichero")
-      }
+  if (q.pathname == "/"){
+    filename += "index.html"
+    mimee = "text/html"
+  }else{
+    //HAY MAS DE UNA / SIGNIFICA QUE ESTA EN OTRA CARPETA
+    let cant = 0;
+    //si hay mas de una /, significa que esta dentro de una carpeta
+    for(var i = 0; i < q.pathname.length; i++) {
+  	   if (q.pathname[i] == "/")
+          cant = cant+1;
+     }
+
+     if (cant>1){
+        filename = "." + q.pathname
+    }else{
+        filename = q.pathname.slice(1)
+    }
+
+    //PARA ENCONTRAR EL TIPO, MIME
+    num = q.pathname.lastIndexOf(".");
+    mime = q.pathname.slice(num+1)
+    mime = "text/" + mime
+  }
+
+
+  //-- Leer fichero
+  fs.readFile(filename, function(err, data) {
+
+    //-- Fichero no encontrado. Devolver mensaje de error
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found");
+    }
+
+
+    //-- Generar el mensaje de respuesta
+    res.writeHead(200, {'Content-Type': mime});
+    res.write(data);
+    res.end();
   });
-})
 
-server.listen(PUERTO);
+}).listen(PUERTO);
+
+console.log("Servidor corriendo...")
+console.log("Puerto: " + PUERTO)
