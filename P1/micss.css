@@ -1,0 +1,44 @@
+body{
+  background-image: url(fondo.png);
+  font-size: 15px;
+}
+
+img {
+  border-radius: 8px;
+  width: 250px;
+  height: 250px;
+}
+
+
+a:link{
+  text-decoration: none;
+  color:#7A081D;
+}
+
+a:hover {
+  color:#B50F2D;
+  text-decoration: none;
+}
+
+a:visited{
+  text-decoration: underline;
+  color:#630AFE;
+}
+
+#izq {
+  margin:auto;
+  width: 250px;
+  height: 250px;
+  padding-left: 50px;
+  padding-right: 50px;
+  float:left;
+}
+
+#derecha {
+  margin:auto;
+  width: 250px;
+  height: 250px;
+  padding-left: 50px;
+  padding-right: 50px;
+  float:right;
+}
