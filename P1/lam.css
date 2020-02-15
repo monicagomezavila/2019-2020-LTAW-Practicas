@@ -1,0 +1,62 @@
+body{
+  background-image: url(./images/fondo.png);
+  font-size: 15px;
+}
+
+img {
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+  border: #7A081D 5px solid;
+}
+
+a:link{
+  text-decoration: none;
+  color:#7A081D;
+  font-weight: bold;
+}
+
+a:hover {
+  color:#B50F2D;
+  text-decoration: none;
+}
+
+#top{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 200px;
+}
+
+#title{
+  border:none;
+  width: 150px;
+  height: 150px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#producto{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 400px;
+}
+
+#back{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 100px;
+  font-size: 30px;
+}
+
+#icon{
+  border:none;
+  width: 50px;
+  height: 50px;
+}
