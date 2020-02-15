@@ -21,12 +21,6 @@ a:hover {
   text-decoration: none;
 }
 
-a:visited{
-  text-decoration: underline;
-  color:#630AFE;
-  border:none;
-}
-
 #top{
   margin: auto;
   margin-left: auto;

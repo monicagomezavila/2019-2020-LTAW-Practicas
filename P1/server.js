@@ -17,7 +17,7 @@ http.createServer((req, res) => {
 
   if (q.pathname == "/"){
     filename += "index.html"
-    mimee = "text/html"
+    mime = "text/html"
   }else{
     //HAY MAS DE UNA / SIGNIFICA QUE ESTA EN OTRA CARPETA
     let cant = 0;
@@ -48,7 +48,6 @@ http.createServer((req, res) => {
       res.writeHead(404, {'Content-Type': 'text/html'});
       return res.end("404 Not Found");
     }
-
 
     //-- Generar el mensaje de respuesta
     res.writeHead(200, {'Content-Type': mime});
