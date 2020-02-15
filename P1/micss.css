@@ -1,18 +1,19 @@
 body{
-  background-image: url(fondo.png);
+  background-image: url(./images/fondo.png);
   font-size: 15px;
 }
 
 img {
-  border-radius: 8px;
-  width: 250px;
-  height: 250px;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  border: #7A081D 5px solid;
 }
-
 
 a:link{
   text-decoration: none;
   color:#7A081D;
+  font-weight: bold;
 }
 
 a:hover {
@@ -23,22 +24,49 @@ a:hover {
 a:visited{
   text-decoration: underline;
   color:#630AFE;
+  border:none;
 }
 
-#izq {
+#top{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 200px;
+}
+
+#title{
+  border:none;
+  width: 150px;
+  height: 150px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#seccion1{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  height: 400px;
+}
+
+#izq{
   margin:auto;
-  width: 250px;
-  height: 250px;
-  padding-left: 50px;
-  padding-right: 50px;
   float:left;
 }
 
-#derecha {
+#drch{
   margin:auto;
-  width: 250px;
-  height: 250px;
-  padding-left: 50px;
-  padding-right: 50px;
   float:right;
+}
+
+#seccion2{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  height: 400px;
 }
