@@ -7,8 +7,8 @@ img {
   border-radius: 10px;
   width: 400px;
   height: 400px;
-  border: #7A081D 5px solid;
 }
+
 
 a:link{
   text-decoration: none;
@@ -25,14 +25,16 @@ a:hover {
   margin: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 150px;
+  text-align: center;
+  /*text-shadow: 4px 3px 2px #C66F95;*/
 }
 
 #title{
   border:none;
   width: 150px;
-  height: 150px;
+  height: 100px;
   display:block;
   margin-left: auto;
   margin-right: auto;
@@ -42,21 +44,33 @@ a:hover {
   margin: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
-  height: 400px;
+  width: 430px;
+  height: 500px;
+  padding-left: 20px;
+  padding-top: 20px;
+  background-color: #A6D2C8;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+#price{
+  color: #7A081D;
 }
 
 #back{
   margin: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 200px;
-  height: 100px;
+  width: 100px;
+  height: 150px;
   font-size: 30px;
+  text-align: center;
 }
 
 #icon{
-  border:none;
-  width: 50px;
-  height: 50px;
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45px;
+  height: 40px;
 }
