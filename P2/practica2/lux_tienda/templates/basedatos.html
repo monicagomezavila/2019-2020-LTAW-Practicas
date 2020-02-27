@@ -1,0 +1,49 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>LUX</title>
+    <link rel="icon" type="image/png" src="{% static 'icon.png'%}" sizes="72x72">
+    <link rel="stylesheet"  href="{% static 'css/micss2.css'%}">
+  </head>
+
+  <body>
+
+    <div id = "top">
+      <img src="{% static 'title.png'%}" id = "title">
+      <p>@philiplueck on Instagram</p>
+    </div>
+
+    <div id = "seccion1">
+
+
+
+      <div id = "izq">
+        <a href="{% static 'lam1.html' %}"><img src="{% static 'image1.png'%}" alt="image2"/></a><br><br>
+        <a href="{% static 'lam1.html' %}">{{productos.0.nombre}}</a>
+        <p>"Esto es una breve descripción del producto"</p>
+      </div>
+
+      <div id = "drch">
+        <a href="{% static 'lam2.html' %}"><img src="{% static 'image4.png'%}" alt="image2" /></a><br><br>
+        <a href="{% static 'lam2.html' %}">LÁMINA 2</a>
+        <p>"Esto es una breve descripción del producto"</p>
+      </div>
+
+    </div>
+
+    <div id = "seccion2">
+      <div id = "izq2">
+        <a href="{% static 'lam3.html' %}"><img src="{% static 'image3.png'%}" alt="image2" /></a><br><br>
+        <a href="{% static 'lam3.html' %}">LÁMINA 3</a>
+        <p>"Esto es una breve descripción del producto"</p>
+        <p>FINAL: {{intento}}</p>
+      </div>
+    </div>
+
+  </body>
+
+</html>
