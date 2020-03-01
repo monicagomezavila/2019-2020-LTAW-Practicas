@@ -10,4 +10,9 @@ def index(request):
 
 def basedatos(request):
     productos = Producto.objects.all()
-    return render(request, 'basedatos.html', {'productos':productos})
+    number = Producto.objects.count()
+    number = number%2;
+    list1 = Producto.objects.all()[:number]
+    list2 = Producto.objects.all()[number:]
+
+    return render(request, 'basedatos.html', {'productos':productos, 'number':number, 'list1':list1, 'list2':list2})
