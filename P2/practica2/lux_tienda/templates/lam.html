@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>LUX</title>
+  <link rel="icon" type="image/png" src="{% static 'icon.png'%}" sizes="72x72">
+  <link rel="stylesheet"  href="{% static 'css/micss.css'%}">
+</head>
+
+
+  <body>
+
+    <div id = "top">
+      <img src="{% static 'title.png'%}" id = "title">
+      <p>@philiplueck on Instagram</p>
+    </div>
+
+    <div id = "producto">
+      <img src= "{% static '' %}{{lamina1.image}}" alt="image1"/></a><br><br>
+      <p id = "price"> $: {{lamina1.precio}} </p>
+      <p>STOCK: {{lamina1.stock}} </p>
+    </div>
+
+  </body>
+</html>

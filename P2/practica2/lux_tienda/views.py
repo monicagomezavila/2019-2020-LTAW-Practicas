@@ -16,3 +16,7 @@ def basedatos(request):
     list2 = Producto.objects.all()[number:]
 
     return render(request, 'basedatos.html', {'productos':productos, 'number':number, 'list1':list1, 'list2':list2})
+
+def lamina1(request):
+    lamina1 = Producto.objects.all()[0]
+    return render(request, 'lam.html', {'lamina1':lamina1})

@@ -10,4 +10,5 @@ urlpatterns = [
     # -- Vista pricipal (índice)
     path('', views.index, name='index'),
     path('basedatos/', views.basedatos, name='base_datos'),
+    path('lamina1/', views.lamina1, name='lamina1'),
 ]

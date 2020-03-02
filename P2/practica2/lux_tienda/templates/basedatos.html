@@ -22,7 +22,7 @@
 
       {% for prod in list1 %}
       <div id = "izq">
-            <a href="{% static 'lam1.html' %}"><img src= '/static/{{prod.image}}' alt="image2"/></a><br><br>
+            <a href="{% static 'lam1.html' %}"><img src= "{% static '' %}{{prod.image}}" alt="image2"/></a><br><br>
             <a href="{% static 'lam1.html' %}">{{prod.nombre}}</a>
             <p>stock: {{prod.stock}} // precio:{{prod.precio}}</p>
       </div>
@@ -30,7 +30,7 @@
 
       {% for prod in list2 %}
       <div id = "drch">
-            <a href="{% static 'lam1.html' %}"><img src='/static/{{prod.image}}' alt="image2"/></a><br><br>
+            <a href="{% static 'lam1.html' %}"><img src="{% static '' %}{{prod.image}}" alt="image2"/></a><br><br>
             <a href="{% static 'lam1.html' %}">{{prod.nombre}}</a>
             <p>stock:{{prod.stock}} // precio:{{prod.precio}}</p>
 

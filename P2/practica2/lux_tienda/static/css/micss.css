@@ -4,11 +4,18 @@ body{
   font-size: 15px;
 }
 
-img {
-  border-radius: 5px;
-  width: 300px;
-  height: 300px;
+body{
+  background-image: url("fondo.png");
+
+  font-size: 15px;
 }
+
+img {
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+}
+
 
 a:link{
   text-decoration: none;
@@ -28,6 +35,7 @@ a:hover {
   width: 200px;
   height: 150px;
   text-align: center;
+  /*text-shadow: 4px 3px 2px #C66F95;*/
 }
 
 #title{
@@ -39,36 +47,37 @@ a:hover {
   margin-right: auto;
 }
 
-
-#seccion1{
+#producto{
   margin: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 1000px;
-  height: 900px;
+  width: 430px;
+  height: 500px;
+  padding-left: 20px;
+  padding-top: 20px;
+  background-color: #A6D2C8;
+  border-radius: 20px;
+  font-size: 30px;
 }
 
-#izq{
-  margin:auto;
-  float:left;
-  background-color: #A6D2C8;
-  width: 330px;
-  height: 400px;
-  padding-left: 30px;
-  padding-top: 25px;
-  border-radius: 30px;
-  margin-bottom: 30px;
-
+#price{
+  color: #7A081D;
 }
 
-#drch{
-  margin:auto;
-  float:right;
-  background-color: #A6D2C8;
-  width: 330px;
-  height: 400px;
-  padding-left: 30px;
-  padding-top: 25px;
-  border-radius: 30px;
-  margin-bottom: 30px;
+#back{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 150px;
+  font-size: 30px;
+  text-align: center;
+}
+
+#icon{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45px;
+  height: 40px;
 }
