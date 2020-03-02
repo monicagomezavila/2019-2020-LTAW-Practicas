@@ -14,7 +14,9 @@ urlpatterns = [
     path('test3/', views.test3, name='test3'), #NO FUNCIONA
     path('test4/', views.test4, name='test4'),
     path('test5/', views.test5, name='test5'),
-    path('list', views.list, name='list'),
-    path('list2', views.list2, name='list2'),
+    path('list/', views.list, name='list'),
+    path('list2/', views.list2, name='list2'),
+    path('formulario1/', views.formulario1, name='formulario1'),
+     path('recepcion1/', views.recepcion1, name='reception1'),
 ]
 #HAY QUE ASOCIARLO AL PROYECTO GLOBAL!! en proyecto web
