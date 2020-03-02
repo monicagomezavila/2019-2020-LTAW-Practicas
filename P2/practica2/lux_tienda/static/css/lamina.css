@@ -10,7 +10,6 @@ img {
   height: 400px;
 }
 
-
 a:link{
   text-decoration: none;
   color:#7A081D;
@@ -45,33 +44,16 @@ a:hover {
   margin: auto;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   width: 430px;
   height: 500px;
   padding-left: 20px;
   padding-top: 20px;
   background-color: #A6D2C8;
   border-radius: 20px;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 #price{
   color: #7A081D;
-}
-
-#back{
-  margin: auto;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100px;
-  height: 150px;
-  font-size: 30px;
-  text-align: center;
-}
-
-#icon{
-  margin: auto;
-  margin-left: auto;
-  margin-right: auto;
-  width: 45px;
-  height: 40px;
 }

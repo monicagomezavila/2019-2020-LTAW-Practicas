@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <title>LUX</title>
     <link rel="icon" type="image/png" src="{% static 'icon.png'%}" sizes="72x72">
-    <link rel="stylesheet"  href="{% static 'css/micss.css'%}">
+    <link rel="stylesheet"  href="{% static 'css/micss2.css'%}">
   </head>
 
   <body>
@@ -22,7 +22,7 @@
 
       {% for prod in list1 %}
       <div id = "izq">
-            <a href="{% static 'lam1.html' %}"><img src= "{% static '' %}{{prod.image}}" alt="image2"/></a><br><br>
+            <a href="../lamina1"><img src= "{% static '' %}{{prod.image}}" alt="image2"/></a><br><br>
             <a href="{% static 'lam1.html' %}">{{prod.nombre}}</a>
             <p>stock: {{prod.stock}} // precio:{{prod.precio}}</p>
       </div>
