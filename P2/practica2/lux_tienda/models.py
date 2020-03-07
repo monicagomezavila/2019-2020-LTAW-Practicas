@@ -9,6 +9,10 @@ class Producto(models.Model):
     precio = models.FloatField()
     image = models.CharField(max_length=200)
 
+class Pedido(models.Model):
+    nombre = models.CharField(max_length=50)
+    articulo = models.CharField(max_length=50)
+
     # -- Usamos el nombre para identificar
     # -- el producto
     def __str__(self):

@@ -12,4 +12,6 @@ urlpatterns = [
     path('lamina1/', views.lamina1, name='lamina1'),
     path('lamina2/', views.lamina2, name='lamina2'),
     path('lamina3/', views.lamina3, name='lamina3'),
+    path('pedido/', views.formulario_pedido, name='formulario_pedido'),
+    path('recepcion/', views.recepcion_pedido, name='recepcion_pedido'),
 ]
