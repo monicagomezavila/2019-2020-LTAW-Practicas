@@ -1,19 +1,31 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>Formulario 1</title>
+      <meta charset="utf-8">
+      <title>Formulario Pedido</title>
+      <link rel="icon" type="image/png" src="{% static 'icon.png'%}" sizes="72x72">
+      <link rel="stylesheet"  href="{% static 'css/pedido.css'%}">
   </head>
   <body>
-    <h1>Formulario de Pedido</h1>
-    <form  action="/lux_tienda/recepcion/" method="post">
-      {% csrf_token %}
-      <label>Nombre de la persona que hace el pedido: <label>
-      <input type="text" name="nombre" value="Anonimo" /><br><br>
 
-      <label>Articulo: <label>
-      <input type="text" name="articulo" value="LAMINA X" />
-      <input type="submit" value="OK" />
+    <div id = "top">
+      <img src="{% static 'title.png'%}" id = "title">
+      <p>@philiplueck on Instagram</p>
+    </div>
+
+    <div id = "formulario">
+      <h1>Formulario del Pedido</h1>
+      <form  action="/lux_tienda/recepcion/" method="post">
+        {% csrf_token %}
+        <label>Nombre de la persona que hace el pedido: <label>
+        <input type="text" name="nombre" value="Anonimo" /><br><br>
+
+        <label>Articulo que quiere comprar: <label>
+        <input type="text" name="articulo" value="LAMINA X"/><br><br>
+        <input type="submit" value="OK" id = "OK" />
+    </div>
 
     </form>
   </body>
