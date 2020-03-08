@@ -28,7 +28,6 @@ a:hover {
   width: 200px;
   height: 150px;
   text-align: center;
-  /*text-shadow: 4px 3px 2px #C66F95;*/
 }
 
 #title{
@@ -51,9 +50,10 @@ a:hover {
   padding-top: 20px;
   background-color: #A6D2C8;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 20px;
+  font: bold 100% monospace;
 }
 
-#price{
-  color: #7A081D;
+#price, #stock{
+  padding-left: 30px
 }

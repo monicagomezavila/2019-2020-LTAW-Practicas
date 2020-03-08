@@ -35,5 +35,4 @@ def recepcion_pedido(request):
     pedido_nuevo = Pedido(nombre=persona, articulo=articulo)
     pedido_nuevo.save()
 
-
-    return HttpResponse("Datos recibidos!!. Comprador: " + persona + articulo)
+    return render(request, 'recepcion_pedido.html', {'persona':persona, 'articulo':articulo})

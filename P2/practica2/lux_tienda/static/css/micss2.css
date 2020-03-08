@@ -49,6 +49,7 @@ a:hover {
 }
 
 #izq, #izq2{
+  font: bold 90% monospace;
   margin:auto;
   float:left;
   background-color: #A6D2C8;
@@ -61,6 +62,7 @@ a:hover {
 }
 
 #drch{
+  font: bold 90% monospace;
   margin:auto;
   float:right;
   background-color: #A6D2C8;

@@ -16,16 +16,9 @@
     </div>
 
     <div id = "formulario">
-      <h1>Formulario del Pedido</h1>
-      <form  action="/lux_tienda/recepcion/" method="post">
-        {% csrf_token %}
-        <label>Nombre de la persona que hace el pedido: <label>
-        <input type="text" name="nombre" value="Anonimo" /><br><br>
-
-        <label>Articulo que quiere comprar: <label>
-        <input type="text" name="articulo" value="LAMINA X"/><br><br>
-        <input type="submit" value="OK" id = "OK" />
-      </form>
+      <p>¡¡Gracias {{persona}}!!</p>
+      <p>Tu {{articulo}} llegará lo antes posible</p>
     </div>
+
   </body>
 </html>
