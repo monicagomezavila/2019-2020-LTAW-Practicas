@@ -21,6 +21,14 @@ a:hover {
   text-decoration: none;
 }
 
+#principal{
+  margin: auto;
+  margin-left: 1000px;
+  width: 100px;
+  height: 150px;
+  font-size: 20px;
+}
+
 #top{
   margin: auto;
   margin-left: auto;

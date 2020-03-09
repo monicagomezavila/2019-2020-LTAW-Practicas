@@ -5,7 +5,7 @@ from django.urls import include, path
 
 urlpatterns = [
     # -- Esta es la URL de mi tienda
-    path('lux_tienda/', include('lux_tienda.urls')),
+    path('', include('lux_tienda.urls')),
 
     # -- URL de administracion (por defecto en django)
     path('admin/', admin.site.urls),
