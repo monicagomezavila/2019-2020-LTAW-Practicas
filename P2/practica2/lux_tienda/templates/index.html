@@ -17,32 +17,28 @@
       <p>@philiplueck on Instagram</p>
     </div>
 
+    <div id = seccion>
     <div id = "seccion1">
-
-      <div id = "izq">
-        <a href="/lamina1"><img src="{% static 'image1.png'%}" alt="image2"/></a><br><br>
-        <a href="/lamina1">LÁMINA 1</a>
-        <p>"fluffy primitives"</p>
+      {% for prod in list1 %}
+       <div id = "izq">
+         <a href="{{prod.articulo}}"><img src="{% static ''%}{{prod.image}}" alt="image2"/></a><br><br>
+         <a href="{{prod.articulo}}">{{prod.nombre}}</a>
+         <p>{{prod.descripcion}}</p>
       </div>
-
-      <div id = "drch">
-        <a href="/lamina2"><img src="{% static 'image2.png'%}" alt="image2" /></a><br><br>
-        <a href="/lamina2">LÁMINA 2</a>
-        <p>"buckyball madness"</p>
-      </div>
-
+      {%endfor%}
     </div>
 
     <div id = "seccion2">
-      <div id = "izq2">
-        <a href="/lamina3"><img src="{% static 'image3.png'%}" alt="image2" /></a><br><br>
-        <a href="/lamina3">LÁMINA 3</a>
-        <p>"torn"</p>
+      {% for prod in list2 %}
+       <div id = "drch">
+         <a href="{{prod.articulo}}"><img src="{% static ''%}{{prod.image}}" alt="image2"/></a><br><br>
+         <a href="{{prod.articulo}}">{{prod.nombre}}</a>
+         <p>{{prod.descripcion}}</p>
       </div>
+      {%endfor%}
     </div>
+  </div>
 
-
-    
 
   </body>
 

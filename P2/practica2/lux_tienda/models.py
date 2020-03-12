@@ -8,6 +8,8 @@ class Producto(models.Model):
     stock = models.IntegerField(default=0)
     precio = models.FloatField()
     image = models.CharField(max_length=200)
+    articulo = models.CharField(default= '/', max_length=200)
+    descripcion = models.CharField(default= 'none', max_length=200)
 
     def __str__(self):
         return self.nombre

@@ -7,7 +7,17 @@ from lux_tienda.models import Producto, Pedido
 # Create your views here.
 def index(request):
     productos = Producto.objects.all()
-    return render(request, 'index.html')
+    number = Producto.objects.count()
+    number = round(number/2);
+
+    list1 = Producto.objects.all()[:number]
+    list2 = Producto.objects.all()[number:]
+
+    print(list1)
+    print(list2)
+
+    return render(request, 'index.html', {'productos':productos, 'number':number, 'list1':list1, 'list2':list2, 'productos':productos})
+
 
 def lamina1(request):
     lamina1 = Producto.objects.all()[0]

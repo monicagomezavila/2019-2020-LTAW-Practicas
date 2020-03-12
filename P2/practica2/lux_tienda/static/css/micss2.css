@@ -1,6 +1,5 @@
 body{
   background-image: url("fondo.png");
-
   font-size: 15px;
 }
 
@@ -39,36 +38,44 @@ a:hover {
   margin-right: auto;
 }
 
-
-#seccion1,#seccion2{
+#seccion{
+  width: 900px;
+  height: 900px;
   margin: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 900px;
-  height: 450px;
 }
 
-#izq, #izq2{
+#seccion1{
+  float: left;
+  width: 370px;
+  height: 900px;
+}
+
+#seccion2{
+  float: right;
+  width: 370px;
+  height: 900px;
+}
+
+#izq{
   font: bold 90% monospace;
-  margin:auto;
-  float:left;
   background-color: #A6D2C8;
   width: 330px;
   height: 400px;
   padding-left: 30px;
   padding-top: 25px;
   border-radius: 30px;
-
+  margin-bottom: 30px;
 }
 
 #drch{
   font: bold 90% monospace;
-  margin:auto;
-  float:right;
   background-color: #A6D2C8;
   width: 330px;
   height: 400px;
   padding-left: 30px;
   padding-top: 25px;
   border-radius: 30px;
+  margin-bottom: 30px;
 }
