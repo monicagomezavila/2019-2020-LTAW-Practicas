@@ -1,0 +1,76 @@
+body{
+  background-image: url(./images/fondo.png);
+  font-size: 15px;
+}
+
+img {
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
+}
+
+
+a:link{
+  text-decoration: none;
+  color:#7A081D;
+  font-weight: bold;
+}
+
+a:hover {
+  color:#B50F2D;
+  text-decoration: none;
+}
+
+#top{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 150px;
+  text-align: center;
+  /*text-shadow: 4px 3px 2px #C66F95;*/
+}
+
+#title{
+  border:none;
+  width: 150px;
+  height: 100px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#producto{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 430px;
+  height: 500px;
+  padding-left: 20px;
+  padding-top: 20px;
+  background-color: #A6D2C8;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+#price{
+  color: #7A081D;
+}
+
+#back{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 150px;
+  font-size: 30px;
+  text-align: center;
+}
+
+#icon{
+  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45px;
+  height: 40px;
+}
