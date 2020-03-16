@@ -1,20 +1,20 @@
 const http = require('http');
-const url = require('url'); //para parsear
+const url = require('url');
 const fs = require('fs');
 const PUERTO = 8080
 
-//-- Configurar y lanzar el servidor. Por cada peticion recibida
-//-- se imprime un mensaje en la consola
+//-- Configurar y lanzar el servidor
+
 http.createServer((req, res) => {
-  //console.log("----------> Peticion recibida")
   let q = url.parse(req.url, true);
-  //console.log("Petición:" + q.pathname)
   var cookie = req.headers.cookie;
+  //console.log("----------> Peticion recibida")
+  //console.log("Petición:" + q.pathname)
   //console.log("Cookie: " + cookie)
 
-  //variables: filename = recurso que se pide; mime = tipo de recurso
-  let filename = "";
-  let mime = "";
+  //-- Variables
+  let filename = ""; //-- Recurso
+  let mime = ""; //-- Tipo de recurso
 
 
   //-- Se accede a la pagina
@@ -33,26 +33,28 @@ http.createServer((req, res) => {
      //-- Si han pulsado el enlace del sistema de registro
      if (!cookie) {
       res.setHeader('Set-Cookie', 'user=MON')
-    }
+      }
 
       mime = "text/html"
       q.pathname = "/index.html"
       filename = "." + q.pathname
 
     }else{
-      //HAY MAS DE UNA / SIGNIFICA QUE ESTA EN OTRA CARPETA
-      let cant = 0;
-      //si hay mas de una /, significa que esta dentro de una carpeta
+      //-- Si encuentra más de una "/" esta en otra carpeta
+      let cant = 0; //-- Variable que guarda la cantidad de "/" encontradas
+
       for(var i = 0; i < q.pathname.length; i++) {
     	 if (q.pathname[i] == "/")
             cant = cant+1;
        }
+
+       //-- Dependiendo del valor de cant se decido el path que tiene el recurso
        if (cant>1){
           filename = "." + q.pathname
       }else{
           filename = q.pathname.slice(1)
       }
-      //PARA ENCONTRAR EL TIPO, MIME
+      //-- Para saber el tipo mime del recurso, se mira la parte final del mismo
       num = q.pathname.lastIndexOf(".");
       mime = q.pathname.slice(num+1)
       mime = "text/" + mime
