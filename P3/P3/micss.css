@@ -69,3 +69,14 @@ a:hover {
   padding-top: 25px;
   border-radius: 30px;
 }
+
+#registro, #registrado{
+  margin:auto;
+  float:right;
+  width: 330px;
+  height: 60px;
+  padding-left: 30px;
+  background-color: #A6D2C8;
+  border-radius: 30px;
+  font-weight: bold;
+}
