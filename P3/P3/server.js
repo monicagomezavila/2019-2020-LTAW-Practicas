@@ -45,7 +45,6 @@ function peticion(req, res) {
     case "/":
     //-- Genero un html segun el estado de la cookie
       content = fs.readFileSync("index.html", "utf-8")
-      mime = "text/html"
 
       user_cookie = readCookie("user");
       if (!user_cookie) {
@@ -55,25 +54,25 @@ function peticion(req, res) {
         content += "<div id = 'registrado'><p> Bienvenido a mi tienda " + user_cookie + "</hp></div></div></body></html>"
       }
 
-      res.writeHead(200, {'Content-Type': mime});
+      res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
 
       break;
 
+
     case "/login":
-      mime = "text/html"
       res.setHeader('Set-Cookie', 'user=MONICA')
       content = "Registrado! Cookie enviada al navegador."
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
-      res.writeHead(200, {'Content-Type': mime});
+      res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
       break;
 
+
     case "/prod1carrito":
-        mime = "text/html"
     //-- Se añade el producto 1 al carrito
       carrito_cookie = readCookie("carrito")
       if (!carrito_cookie){
@@ -86,13 +85,13 @@ function peticion(req, res) {
       content = "Ya hemos tenemos tu producto en el carrito!!!"
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
-      res.writeHead(200, {'Content-Type': mime});
+      res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
       break;
+
 
     case "/prod2carrito":
-        mime = "text/html"
     //-- Se añade el producto 1 al carrito
       carrito_cookie = readCookie("carrito")
       if (!carrito_cookie){
@@ -105,13 +104,13 @@ function peticion(req, res) {
       content = "Ya hemos tenemos tu producto en el carrito!!!"
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
-      res.writeHead(200, {'Content-Type': mime});
+      res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
       break;
 
-    case "prod3carrito":
-        mime = "text/html"
+
+    case "/prod3carrito":
     //-- Se añade el producto 1 al carrito
       carrito_cookie = readCookie("carrito")
       if (!carrito_cookie){
@@ -124,10 +123,43 @@ function peticion(req, res) {
       content = "Ya hemos tenemos tu producto en el carrito!!!"
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
-      res.writeHead(200, {'Content-Type': mime});
+      res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(content);
       res.end();
       break;
+
+    case "/formulario":
+    if (req.method === 'POST') {
+
+        var content = fs.readFileSync("compra.html", "utf-8")
+
+        req.on('data', chunk => {
+            //-- Leer los datos (convertir el buffer a cadena)
+            data = chunk.toString();
+
+            //-- Añadir los datos a la respuesta
+            content += data;
+
+            //-- Fin del mensaje. Enlace al formulario
+            content += `
+                </p>
+                <a href="/">Pagina principal</a>
+              </body>
+            </html>
+            `
+            res.statusCode = 200;
+         });
+
+         req.on('end', ()=> {
+           //-- Generar el mensaje de respuesta
+           res.setHeader('Content-Type', 'text/html')
+           res.write(content);
+           res.end();
+         })
+         return
+      }
+      break
+
 
     default:
 
