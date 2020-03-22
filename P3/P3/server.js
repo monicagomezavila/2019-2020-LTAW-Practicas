@@ -12,11 +12,11 @@ function peticion(req, res) {
 
   //-- Mostrar en la consola el recurso al que se accede
   const q = url.parse(req.url, true);
-  console.log("Petición: " + q.pathname)
+  //console.log("Petición: " + q.pathname)
 
   //-- Leer cookies
   const cookie = req.headers.cookie;
-  console.log("Cookie: " + cookie)
+  //console.log("Cookie: " + cookie)
 
 
   //-- Funcion que devuelve el valor de una cookie segun el nombre de la misma que se le pasa
@@ -137,12 +137,26 @@ function peticion(req, res) {
             //-- Leer los datos (convertir el buffer a cadena)
             data = chunk.toString();
 
-            //-- Añadir los datos a la respuesta
-            content += data;
+            //-- Para sacar los datos introducidos por el usuario
+            var cadena = data.split('&');
+            content += "<ol>"
+            for(var i=0;i < cadena.length;i++){
+              num_equal = cadena[i].lastIndexOf("=");
+              clave = cadena[i].slice(0,num_equal);
+              valor = cadena[i].slice(num_equal+1)
+              content += "<li><p>" + clave + " : " + valor + "</p></li>"
+            }
 
+
+            //-- Para sacar los datos de la cookie de carrito_cookie
+            carrito_cookie = readCookie("carrito")
+            if (carrito_cookie){
+              content += "<li><p>CARRITO: "+ carrito_cookie +"</p></li>"
+            }else{
+              content += "<p> NO TIENES CARRITO DE COMPRA, ECHA UN VISTAZO ;)</p>"
+            }
             //-- Fin del mensaje. Enlace al formulario
-            content += `
-                </p>
+            content += `</ol>
                 <a href="/">Pagina principal</a>
               </body>
             </html>
