@@ -18,25 +18,40 @@ function peticion(req, res) {
   const cookie = req.headers.cookie;
   console.log("Cookie: " + cookie)
 
-  var filename = ""
-  var mime = ""
+
+  //-- Funcion que devuelve el valor de una cookie segun el nombre de la misma que se le pasa
+  function readCookie(name){
+    if (cookie){
+    var nameEQ = name + "=";
+    var ca = cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) {
+        return decodeURIComponent( c.substring(nameEQ.length,c.length) );
+      }
+    }
+    return null;
+  //-- No hay cookie definidas
+  }else{
+    return null;
+  }
+}
 
 
+  //-- Dependiendo a que recurso accedan
   switch (q.pathname) {
 
-    //-- Pagina principal
     case "/":
-    //-- GENERO UN HTML SEGUN LA CONDICION DE LAS COOKIES
+    //-- Genero un html segun el estado de la cookie
       content = fs.readFileSync("index.html", "utf-8")
       mime = "text/html"
-      //-- No hay ninguna cookie
-      if (!cookie) {
-        content += "<div id = 'registro'><a href=/login><h2> SISTEMA DE REGISTRO</h2></a></div></div></body></html>"
 
+      user_cookie = readCookie("user");
+      if (!user_cookie) {
+        content += "<div id = 'registro'><a href=/login><h2> SISTEMA DE REGISTRO</h2></a></div></div></body></html>"
       //-- Hay definida una Cookie
       } else {
-        equal_num = cookie.lastIndexOf("=");
-        user_cookie = cookie.slice(equal_num+1)
         content += "<div id = 'registrado'><p> Bienvenido a mi tienda " + user_cookie + "</hp></div></div></body></html>"
       }
 
@@ -51,14 +66,73 @@ function peticion(req, res) {
       res.setHeader('Set-Cookie', 'user=MONICA')
       content = "Registrado! Cookie enviada al navegador."
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
+
       res.writeHead(200, {'Content-Type': mime});
       res.write(content);
       res.end();
       break;
 
+    case "/prod1carrito":
+        mime = "text/html"
+    //-- Se añade el producto 1 al carrito
+      carrito_cookie = readCookie("carrito")
+      if (!carrito_cookie){
+        res.setHeader('Set-Cookie', 'carrito=producto1')
+      }else{
+        new_cookie = 'carrito=producto1&' + carrito_cookie
+        res.setHeader('Set-Cookie', new_cookie)
+      }
+
+      content = "Ya hemos tenemos tu producto en el carrito!!!"
+      content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
+
+      res.writeHead(200, {'Content-Type': mime});
+      res.write(content);
+      res.end();
+      break;
+
+    case "/prod2carrito":
+        mime = "text/html"
+    //-- Se añade el producto 1 al carrito
+      carrito_cookie = readCookie("carrito")
+      if (!carrito_cookie){
+        res.setHeader('Set-Cookie', 'carrito=producto2')
+      }else{
+        new_cookie = 'carrito=producto2&' + carrito_cookie
+        res.setHeader('Set-Cookie', new_cookie)
+      }
+
+      content = "Ya hemos tenemos tu producto en el carrito!!!"
+      content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
+
+      res.writeHead(200, {'Content-Type': mime});
+      res.write(content);
+      res.end();
+      break;
+
+    case "prod3carrito":
+        mime = "text/html"
+    //-- Se añade el producto 1 al carrito
+      carrito_cookie = readCookie("carrito")
+      if (!carrito_cookie){
+        res.setHeader('Set-Cookie', 'carrito=producto2')
+      }else{
+        new_cookie = 'carrito=producto2&' + carrito_cookie
+        res.setHeader('Set-Cookie', new_cookie)
+      }
+
+      content = "Ya hemos tenemos tu producto en el carrito!!!"
+      content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
+
+      res.writeHead(200, {'Content-Type': mime});
+      res.write(content);
+      res.end();
+      break;
 
     default:
 
+      var filename = ""
+      var mime = ""
       //-- Peticiones de estilo, imágenes, etc...
       let cant = 0;
       //-- Si hay mas de una /, significa que esta dentro de una carpeta
