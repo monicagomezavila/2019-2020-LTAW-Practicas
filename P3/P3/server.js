@@ -12,11 +12,13 @@ function peticion(req, res) {
 
   //-- Mostrar en la consola el recurso al que se accede
   const q = url.parse(req.url, true);
-  //console.log("Petición: " + q.pathname)
+  console.log("Petición: " + q.pathname)
 
   //-- Leer cookies
   const cookie = req.headers.cookie;
   //console.log("Cookie: " + cookie)
+
+  let productos = ["FPGA-1", "RISC-V", "74ls00", "FPGA-2", "74ls01", "AVR", "Arduino-UNO"];
 
 
   //-- Funcion que devuelve el valor de una cookie segun el nombre de la misma que se le pasa
@@ -173,6 +175,68 @@ function peticion(req, res) {
          return
       }
       break
+
+    case "/client.js":
+      fs.readFile("./client.js", (err, data) => {
+        //-- Generar el mensaje de respuesta
+        res.writeHead(200, {'Content-Type': 'application/javascript'});
+        res.write(data);
+        res.end();
+        return
+      });
+      break;
+
+    //-- Acceso al recurso JSON
+    case "/myquery":
+
+      //-- El array de productos lo pasamos a una cadena de texto,
+      //-- en formato JSON:
+      //content = JSON.stringify(productos) + '\n';
+
+      const params = q.query;
+
+      var same = new Boolean("false")
+
+      content = "[ "
+      for(var i = 0; i < productos.length; i++) {
+        j = 0;
+        while (j < params.param1.length) {
+          if (params.param1[j].toLowerCase() != productos[i][j].toLowerCase()){
+            same = "false";
+             break;
+          }else{
+            same = "true";
+          }
+          j++;
+        }
+        if (same == "true"){
+          content += '"' + productos[i] + '",' ;
+        }
+      }
+      content = content.slice(0,-1)
+      content += "]"
+      console.log(content)
+      //content = JSON.stringify(content) + '\n';
+
+
+      //-- Generar el mensaje de respuesta
+      //-- IMPORTANTE! Hay que indicar que se trata de un objeto JSON
+      //-- en la cabecera Content-Type
+      res.setHeader('Content-Type', 'application/json')
+      res.write(content);
+      res.end();
+      return
+      break
+
+    case "/busqueda":
+      fs.readFile("./pet_ajax.html", (err, data) => {
+        //-- Generar el mensaje de respuesta
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+        return
+      });
+      break;
 
 
     default:

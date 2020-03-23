@@ -52,18 +52,19 @@ function peticion(req, res) {
 
         //-- El array de productos lo pasamos a una cadena de texto,
         //-- en formato JSON:
-        //content = JSON.stringify(productos) + '\n';
+        content = JSON.stringify(productos) + '\n';
+
         const params = q.query;
         console.log("Parametros: " +params.param1 + ' y ' + params.param2);
 
         //-- Generar el mensaje de respuesta
         //-- IMPORTANTE! Hay que indicar que se trata de un objeto JSON
         //-- en la cabecera Content-Type
-        //res.setHeader('Content-Type', 'application/json')
-        //res.write(content);
-        //res.end();
-        //return
-      //  break
+        res.setHeader('Content-Type', 'application/json')
+        res.write(content);
+        res.end();
+        return
+        break
 
     //-- Se intenta acceder a un recurso que no existe
     default:
