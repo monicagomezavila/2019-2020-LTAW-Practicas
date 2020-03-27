@@ -118,7 +118,7 @@ function peticion(req, res) {
       if (!carrito_cookie){
         res.setHeader('Set-Cookie', 'carrito=producto2')
       }else{
-        new_cookie = 'carrito=producto2&' + carrito_cookie
+        new_cookie = 'carrito=producto3&' + carrito_cookie
         res.setHeader('Set-Cookie', new_cookie)
       }
 
