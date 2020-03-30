@@ -23,7 +23,9 @@ http.listen(PORT, function(){
   console.log('Servidor lanzado en puerto ' + PORT);
 });
 
-//-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
+
+//-- PUNTOS DE ENTRADA DE LA APLICACION WEB
+
 //-- Página principal
 app.get('/', (req, res) => {
   let path = __dirname + '/chat.html';
@@ -31,14 +33,15 @@ app.get('/', (req, res) => {
   console.log("Acceso a " + path);
 });
 
+
 //-- Otra vista de prueba
 app.get('/woala', (req, res) => {
   res.send('WOALA! Chuck Norris approved!! :-)');
   console.log("Acceso a /woala");
 });
 
-//-- El resto de peticiones se interpretan como
-//-- ficheros estáticos
+
+//-- El resto de peticiones se interpretan como ficheros estáticos
 app.use('/', express.static(__dirname +'/'));
 
 //------ COMUNICACION POR WEBSOCKETS
@@ -49,13 +52,15 @@ io.on('connection', function(socket){
   //-- Usuario conectado. Imprimir el identificador de su socket
   console.log('--> Usuario conectado. Socket id: ' + socket.id);
   contador_users += 1;
-  msg_contador = "Eres el usuario: " + contador_users;
-  msg_users = "Hay un nuevo miembro en el CHAT"
+  msg_bienvenida = "Bienvenido al CHAT."
+  msg_contador = ">Eres el usuario: " + contador_users;
+  msg_users = ">Hay un nuevo miembro en el CHAT"
 
   //-- Le damos la bienvenida a través del evento 'hello'
   //-- ESte evento lo hemos creado nosotros para nuestro chat
-  socket.emit('hello', "Bienvenido al Chat");
-  socket.emit('hello', msg_contador);
+  socket.emit('hello', msg_bienvenida);
+  socket.emit('msg', msg_contador);
+
   //-- Envía un mensaje a todos los usuarios excecto al que lo envía
   socket.broadcast.emit('msg', msg_users);
 
@@ -72,22 +77,24 @@ io.on('connection', function(socket){
     console.log("cmd: " + socket.id + ': ' + msg);
     switch (msg) {
       case "/help":
-        comandos = ["/help", "/list", "/hello", "/date"]
+        comandos = ">" + ["/help", "/list", "/hello", "/date"]
         io.to(socket.id).emit('cmd', comandos);
         break;
       case "/hello":
-        socket.emit('cmd', "Bienvenido al Chat");
+        hi = (">" + msg_bienvenida)
+        socket.emit('cmd', hi);
         break
       case "/date":
         var f = new Date();
-        fecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+        fecha = ">" + (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
         socket.emit('cmd', fecha);
         break
       case "/list":
-        socket.emit('cmd', contador_users);
+        list = (">" + contador_users)
+        socket.emit('cmd', list);
         break
       default:
-        socket.emit('cmd', "NO existe ese comando");
+        socket.emit('cmd', ">NO existe ese comando");
     }
   })
 

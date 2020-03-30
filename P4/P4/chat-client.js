@@ -23,13 +23,13 @@ socket.on('hello', (msg) => {
 //-- Se ha recibido un mensaje
 socket.on('msg', (msg) => {
   //-- Añadirlo al párrafo display
-  display.innerHTML += "<br> > " + msg;
+  display.innerHTML += "<br> >" + msg;
 });
 
 //-- Mensaje del server sólo para ese user
 socket.on('cmd', (msg) => {
   //-- Añadirlo al párrafo display
-  display.innerHTML += "<br> > " + msg;
+  display.innerHTML += "<br> >" + msg;
 });
 
 //-- Botón de envío apretado
