@@ -70,7 +70,7 @@ a:hover {
   border-radius: 30px;
 }
 
-#registro, #registrado, #formulario{
+#registro, #registrado, #formulario, #busqueda{
   margin:auto;
   float:right;
   width: 330px;

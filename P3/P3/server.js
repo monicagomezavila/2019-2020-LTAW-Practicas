@@ -18,7 +18,7 @@ function peticion(req, res) {
   const cookie = req.headers.cookie;
   //console.log("Cookie: " + cookie)
 
-  let productos = ["FPGA-1", "RISC-V", "74ls00", "FPGA-2", "74ls01", "AVR", "Arduino-UNO"];
+  let productos = ["LAMINA 1", "LAMINA 2", "LAMINA 3"];
 
 
   //-- Funcion que devuelve el valor de una cookie segun el nombre de la misma que se le pasa
@@ -76,15 +76,20 @@ function peticion(req, res) {
 
     case "/prod1carrito":
     //-- Se añade el producto 1 al carrito
-      carrito_cookie = readCookie("carrito")
-      if (!carrito_cookie){
-        res.setHeader('Set-Cookie', 'carrito=producto1')
-      }else{
-        new_cookie = 'carrito=producto1&' + carrito_cookie
-        res.setHeader('Set-Cookie', new_cookie)
-      }
+      user_cookie = readCookie("user");
+      if (user_cookie){
+        carrito_cookie = readCookie("carrito")
+        if (!carrito_cookie){
+          res.setHeader('Set-Cookie', 'carrito=producto1')
+        }else{
+          new_cookie = 'carrito=producto1&' + carrito_cookie
+          res.setHeader('Set-Cookie', new_cookie)
+        }
+          content = "Ya hemos tenemos tu producto en el carrito!!!"
+     }else{
+       content = "Deber registrarte primero, ves a nuestra pag principal :D"
+     }
 
-      content = "Ya hemos tenemos tu producto en el carrito!!!"
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -95,15 +100,20 @@ function peticion(req, res) {
 
     case "/prod2carrito":
     //-- Se añade el producto 1 al carrito
-      carrito_cookie = readCookie("carrito")
-      if (!carrito_cookie){
-        res.setHeader('Set-Cookie', 'carrito=producto2')
+      user_cookie = readCookie("user");
+      if (user_cookie){
+        carrito_cookie = readCookie("carrito")
+        if (!carrito_cookie){
+          res.setHeader('Set-Cookie', 'carrito=producto2')
+        }else{
+          new_cookie = 'carrito=producto2&' + carrito_cookie
+          res.setHeader('Set-Cookie', new_cookie)
+        }
+        content = "Ya hemos tenemos tu producto en el carrito!!!"
       }else{
-        new_cookie = 'carrito=producto2&' + carrito_cookie
-        res.setHeader('Set-Cookie', new_cookie)
+        content = "Deber registrarte primero, ves a nuestra pag principal :D"
       }
 
-      content = "Ya hemos tenemos tu producto en el carrito!!!"
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -114,15 +124,20 @@ function peticion(req, res) {
 
     case "/prod3carrito":
     //-- Se añade el producto 1 al carrito
-      carrito_cookie = readCookie("carrito")
-      if (!carrito_cookie){
-        res.setHeader('Set-Cookie', 'carrito=producto2')
-      }else{
-        new_cookie = 'carrito=producto3&' + carrito_cookie
-        res.setHeader('Set-Cookie', new_cookie)
-      }
 
-      content = "Ya hemos tenemos tu producto en el carrito!!!"
+      user_cookie = readCookie("user");
+      if (user_cookie){
+        carrito_cookie = readCookie("carrito")
+        if (!carrito_cookie){
+          res.setHeader('Set-Cookie', 'carrito=producto2')
+        }else{
+          new_cookie = 'carrito=producto3&' + carrito_cookie
+          res.setHeader('Set-Cookie', new_cookie)
+        }
+        content = "Ya hemos tenemos tu producto en el carrito!!!"
+      }else{
+          content = "Deber registrarte primero, ves a nuestra pag principal :D"
+      }
       content += "<a href=/><h2> PAGINA PRINCIPAL</h2></a>"
 
       res.writeHead(200, {'Content-Type': 'text/html'});
